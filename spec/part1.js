@@ -467,23 +467,23 @@
       it('should pass items of the array into the iterator from left to right', function() {
         var orderTraversed = [];
 
-        _.reduce([1, 2, 3, 4], function(memo, item) {
-          // FILL_ME_IN
-          // Add a line here that makes this test pass
-          orderTraversed.push(item);
-          // for a working implementation of reduce
-
-          return memo;
-        }, 10);
-        
         // _.reduce([1, 2, 3, 4], function(memo, item) {
         //   // FILL_ME_IN
         //   // Add a line here that makes this test pass
-        //   memo.push(item);
+        //   orderTraversed.push(item);
         //   // for a working implementation of reduce
-          
+
         //   return memo;
-        // }, orderTraversed);
+        // }, 10);
+        
+        _.reduce([1, 2, 3, 4], function(memo, item) {
+          // FILL_ME_IN
+          // Add a line here that makes this test pass
+          memo.push(item);
+          // for a working implementation of reduce
+          
+          return memo;
+        }, orderTraversed);
 
         expect(orderTraversed).to.eql([1, 2, 3, 4]);
       });
@@ -499,8 +499,8 @@
           }
         };
 
-        var total = _.reduce([1, 1, 2], returnFalsy);
-        expect(total).to.equal(3);
+        var total = _.reduce([1, 4, 2, 1], returnFalsy);
+        expect(total).to.equal(2);
       });
 
       it('should pass every item of the array into the iterator if a memo is passed in', function() {
@@ -511,7 +511,7 @@
         expect(result).to.equal(4);
       });
 
-      it('Fill me in with a description of the behavior this test is checking for', function() {
+      it('should pass every item of the array into the iterator even if a memo is 0', function() {
         var result = _.reduce([1, 2, 3], function(memo, item) {
           return memo * item;
         }, 0);
